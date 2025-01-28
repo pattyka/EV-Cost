@@ -1,0 +1,793 @@
+/* Import root variables */
+:root {
+    --blue: rgb(10, 132, 255);
+    --white: #ffffff;
+    --gray: #f3f4f6;
+    --light-gray: #e5e7eb;
+    --dark-gray: #1f2937;
+    --dark-mode-bg: #111827;
+    --dark-mode-card: #172844;
+    --dark-mode-light-text: #d1d5db;
+    --darkerblue: rgb(44, 115, 186);
+    --success-green: #10B981;
+}
+
+/* Inherit main styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--dark-mode-bg);
+    color: var(--white);
+}
+
+/* Calculator specific styles */
+.calculator-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.calculator-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--dark-mode-light-text);
+}
+
+.assumptions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.assumption-card {
+    background: var(--dark-mode-card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.assumption-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+}
+
+.value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--blue);
+    margin: 1rem 0;
+}
+
+.change-value-btn {
+    background: transparent;
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.change-value-btn:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.input-section {
+    background: var(--dark-mode-card);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.input-section label {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+#kilometers {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.8rem;
+    border: 2px solid var(--blue);
+    border-radius: 8px;
+    background: var(--dark-mode-bg);
+    color: var(--white);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+#calculate-btn {
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#calculate-btn:hover {
+    transform: translateY(-2px);
+}
+
+.results {
+    margin-top: 2rem;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.result-card {
+    background: var(--dark-mode-card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.result-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    color: var(--dark-mode-light-text);
+}
+
+.cost {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.savings-amount {
+    color: var(--success-green);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--dark-mode-card);
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.close-modal {
+    background: transparent;
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .assumptions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Adjust input field */
+    #kilometers {
+        max-width: 250px;
+        padding: 0.6rem;
+        font-size: 0.95rem;
+    }
+
+    /* Adjust calculate button */
+    #calculate-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    /* Adjust assumption cards buttons */
+    .change-value-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    /* Adjust input section */
+    .input-section label {
+        font-size: 1.1rem;
+    }
+
+    .input-section {
+        padding: 1.2rem;
+    }
+
+    .input-hint {
+        font-size: 0.85rem;
+    }
+
+    .modal-content {
+        width: 85%;
+        margin: 0 1rem;
+        padding: 1.2rem;
+    }
+
+    .features-modal {
+        max-width: 85%;
+    }
+
+    .modal-features li {
+        font-size: 0.95rem;
+        padding: 0.6rem 0.8rem;
+    }
+
+    .modal-buttons {
+        gap: 0.8rem;
+    }
+
+    .modal-buttons .download-button,
+    .modal-buttons .close-modal {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Even smaller screens */
+@media (max-width: 360px) {
+    #kilometers {
+        max-width: 220px;
+        padding: 0.5rem;
+    }
+
+    #calculate-btn {
+        padding: 0.7rem 1.2rem;
+    }
+
+    .modal-content {
+        width: 80%;
+        margin: 0 0.8rem;
+    }
+}
+
+/* Header styles */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(15, 21, 35, 0.9);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#logoimg {
+    width: 70px;
+    border-radius: 14px;
+}
+
+.site-title a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Navigation buttons */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.back-button {
+    background: transparent;
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.download-button {
+    background: var(--blue);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.download-button:hover {
+    background: rgb(0, 112, 245);
+}
+
+/* Calculator title */
+.calculator-container h1 {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 2.5rem;
+}
+
+/* Improve input field */
+#kilometers {
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
+#kilometers::-webkit-outer-spin-button,
+#kilometers::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Modal button improvements */
+.modal-buttons .download-button {
+    padding: 0.8rem 1.5rem;
+    font-weight: bold;
+}
+
+.close-modal {
+    padding: 0.8rem 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.close-modal:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+
+/* Light mode support */
+body.light .sticky-header {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+body.light .site-title a {
+    color: var(--dark-gray);
+}
+
+/* Preview Banner */
+.preview-features-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(90deg, var(--blue), var(--darkerblue));
+    color: var(--white);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    transition: transform 0.2s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.preview-features-btn:hover {
+    transform: translateY(-2px);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Add styles for the features modal */
+.features-modal {
+    max-width: 500px;
+}
+
+.premium-features-list {
+    margin: 2rem 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .preview-features-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Input hint */
+.input-hint {
+    color: var(--dark-mode-light-text);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* App Promo Section */
+.app-promo {
+    background: var(--dark-mode-card);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+    text-align: center;
+    border: 2px solid var(--blue);
+}
+
+.app-promo h3 {
+    color: var(--white);
+    margin-bottom: 1.5rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.feature-list li {
+    color: var(--dark-mode-light-text);
+}
+
+/* Modal Features List */
+.modal-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.modal-features li {
+    margin: 0.8rem 0;
+    color: var(--dark-mode-light-text);
+}
+
+/* Pulse animation for download buttons */
+.download-button.pulse {
+    animation: buttonPulse 2s infinite;
+}
+
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(10, 132, 255, 0.4);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(10, 132, 255, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(10, 132, 255, 0);
+    }
+}
+
+/* Light mode adjustments */
+body.light .app-promo {
+    background: var(--white);
+    border-color: var(--blue);
+}
+
+body.light .app-promo h3 {
+    color: var(--dark-gray);
+}
+
+body.light .feature-list li,
+body.light .modal-features li {
+    color: var(--dark-gray);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .preview-banner {
+        border-radius: 0;
+        margin: -1rem -1rem 2rem -1rem;
+    }
+    
+    .app-promo {
+        padding: 1.5rem;
+    }
+    
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Add these new styles for enhanced app promotion */
+
+.premium-badge {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(0, 198, 255, 0.3);
+}
+
+.premium-feature {
+    background: linear-gradient(90deg, rgba(10, 132, 255, 0.1), transparent);
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+    transition: transform 0.2s ease;
+    font-size: 1rem;
+}
+
+.premium-feature:hover {
+    transform: translateX(5px);
+}
+
+.download-prompt {
+    background: linear-gradient(135deg, rgba(10, 132, 255, 0.1), transparent);
+    padding: 1.2rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+}
+
+.premium-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--blue);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.app-promo {
+    position: relative;
+    overflow: hidden;
+}
+
+.app-promo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, transparent, rgba(10, 132, 255, 0.1));
+    border-radius: 0 0 0 100%;
+}
+
+/* Adjust for light mode */
+body.light .premium-feature {
+    background: linear-gradient(90deg, rgba(10, 132, 255, 0.15), transparent);
+}
+
+body.light .download-prompt {
+    background: linear-gradient(135deg, rgba(10, 132, 255, 0.15), transparent);
+}
+
+/* Add this to your existing styles */
+.gradient-text {
+    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 1.2rem;
+}
+
+/* Update the premium feature styles to match the actual features */
+.premium-feature {
+    background: linear-gradient(90deg, rgba(10, 132, 255, 0.1), transparent);
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+    transition: transform 0.2s ease;
+    font-size: 1rem;
+}
+
+/* Add this to your existing gradient text styles */
+.gradient-text-small {
+    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+/* Update mobile padding adjustments */
+@media (max-width: 768px) {
+    .calculator-container {
+        margin: 1rem auto;
+        padding: 0 0.8rem;
+    }
+
+    .assumption-card {
+        padding: 1.2rem;
+    }
+
+    .input-section {
+        padding: 1.5rem;
+    }
+
+    .result-card {
+        padding: 1.2rem;
+    }
+
+    .app-promo {
+        padding: 1.5rem;
+    }
+
+    .premium-feature {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .download-prompt {
+        padding: 1.2rem;
+        margin-top: 1.5rem;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .feature-list {
+        gap: 0.8rem;
+    }
+}
+
+/* Update the mobile header styles */
+@media (max-width: 768px) {
+    .container {
+        width: 85%; /* Increase side margins */
+    }
+
+    .sticky-header {
+        padding: 0.5rem 0;
+    }
+
+    .nav-actions {
+        gap: 0.6rem; /* Reduce gap between buttons */
+    }
+
+    /* Adjust button sizes */
+    .back-button, 
+    .download-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    /* Adjust logo and title */
+    #logoimg {
+        width: 40px;
+    }
+
+    .site-title a {
+        font-size: 1.2rem;
+    }
+
+    /* Adjust calculator container padding */
+    .calculator-container {
+        margin: 1rem auto;
+        padding: 0 1.5rem; /* Increase side padding */
+    }
+}
+
+/* Adjust for very small screens */
+@media (max-width: 360px) {
+    .container {
+        width: 90%;
+    }
+
+    .nav-actions {
+        gap: 0.4rem;
+    }
+
+    .back-button, 
+    .download-button {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Add these light mode styles */
+body.light {
+  background: var(--gray);
+  color: var(--dark-gray);
+}
+
+body.light .calculator-intro {
+  color: var(--dark-gray);
+}
+
+body.light .gradient-text-small {
+  background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.light .assumption-card {
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+body.light .input-section {
+  background: var(--white);
+}
+
+body.light .result-card {
+  background: var(--white);
+}
+
+body.light #kilometers {
+  background: var(--gray);
+  color: var(--dark-gray);
+}
+
+body.light .input-hint {
+  color: var(--dark-gray);
+}
+
+/* Add these light mode styles for modal */
+body.light .modal-content {
+    background: var(--white);
+    color: var(--dark-gray);
+}
+
+body.light .modal-features li {
+    color: var(--dark-gray);
+}
+
+body.light .features-modal .premium-feature {
+    background: linear-gradient(90deg, rgba(10, 132, 255, 0.15), transparent);
+    color: var(--dark-gray);
+}
+  

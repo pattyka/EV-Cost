@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Cost Calculator Preview</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="sticky-header">
+        <nav class="container">
+            <div class="logo-container">
+                <div class="logo"><img src="../img/screenshots/icon/hope-1024 copy.png" id="logoimg" alt="EV Cost Logo"></div>
+                <h1 class="site-title"><a href="../index.html" id="headera">EV Cost</a></h1>
+            </div>
+            <div class="nav-actions">
+                <a href="../index.html" class="back-button">Back to Home</a>
+                <a href="https://apps.apple.com/us/app/ev-cost/id6738306455" target="_blank" class="download-button pulse">Get Full Version</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="calculator-container">
+        <button class="preview-features-btn" id="showFeaturesBtn">
+            🚀 See All Features
+        </button>
+
+        <h1>Try Our EV Cost Calculator</h1>
+        <p class="calculator-intro">Get a taste of how much you could save on your next trip. Download the app for <span class="gradient-text-small">customizable values and advanced features!</span></p>
+
+        <div class="assumptions-grid">
+            <div class="assumption-card">
+                <h3>EV Consumption</h3>
+                <p class="value">16 kWh/100km</p>
+                <button class="change-value-btn">Customize in App</button>
+            </div>
+            <div class="assumption-card">
+                <h3>ICE Consumption</h3>
+                <p class="value">7 L/100km</p>
+                <button class="change-value-btn">Customize in App</button>
+            </div>
+            <div class="assumption-card">
+                <h3>Fuel Price</h3>
+                <p class="value">600 HUF/L</p>
+                <button class="change-value-btn">Customize in App</button>
+            </div>
+            <div class="assumption-card">
+                <h3>Electricity Price</h3>
+                <p class="value">60 HUF/kWh</p>
+                <button class="change-value-btn">Customize in App</button>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <label for="kilometers">Enter your trip distance in kilometers</label>
+            <input type="number" id="kilometers" placeholder="Enter kilometers" min="0">
+            <button id="calculate-btn">Calculate Trip Cost</button>
+            <p class="input-hint">Try our calculator with standard values - Download the app to use your actual consumption data!</p>
+        </div>
+
+        <div class="results" style="display: none;">
+            <div class="results-grid">
+                <div class="result-card ev-cost">
+                    <h3>EV Trip Cost</h3>
+                    <p class="cost">0 HUF</p>
+                </div>
+                <div class="result-card ice-cost">
+                    <h3>ICE Trip Cost</h3>
+                    <p class="cost">0 HUF</p>
+                </div>
+                <div class="result-card savings">
+                    <h3>Trip Savings with EV</h3>
+                    <p class="cost savings-amount">0 HUF</p>
+                </div>
+            </div>
+            <div class="app-promo">
+                <div class="premium-badge">Advanced Features</div>
+                <h3 class="gradient-text">The App Does Way More!</h3>
+                <ul class="feature-list">
+                    <li class="premium-feature">📊 Beautiful chart view of your trips</li>
+                    <li class="premium-feature">🌍 CO2 emission comparison</li>
+                    <li class="premium-feature">💶 Switch between EUR and HUF</li>
+                    <li class="premium-feature">📱 Haptic feedback for better experience</li>
+                    <li class="premium-feature">📈 Track your savings over time</li>
+                    <li class="premium-feature">✨ And many more features coming soon!</li>
+                </ul>
+                <div class="download-prompt">
+                    <p class="premium-text">Get all these features for FREE!</p>
+                    <a href="https://apps.apple.com/us/app/ev-cost/id6738306455" target="_blank" class="download-button pulse">Download Full Version</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="changeValueModal">
+        <div class="modal-content">
+            <h2>Unlock Full Customization!</h2>
+            <p>The app version allows you to:</p>
+            <ul class="modal-features">
+                <li>✓ Set custom consumption values</li>
+                <li>✓ Update fuel prices in real-time</li>
+                <li>✓ Save different vehicle profiles</li>
+                <li>✓ Track your savings history</li>
+            </ul>
+            <div class="modal-buttons">
+                <button class="close-modal">Maybe Later</button>
+                <a href="https://apps.apple.com/us/app/ev-cost/id6738306455" target="_blank" class="download-button">Download Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="featuresModal">
+        <div class="modal-content features-modal">
+            <h2 class="gradient-text">Advanced Features in App</h2>
+            <ul class="modal-features premium-features-list">
+                <li class="premium-feature">📊 Beautiful chart view of your trips</li>
+                <li class="premium-feature">🌍 CO2 emission comparison</li>
+                <li class="premium-feature">💶 Switch between EUR and HUF</li>
+                <li class="premium-feature">📱 Haptic feedback for better experience</li>
+                <li class="premium-feature">📈 Track your savings over time</li>
+                <li class="premium-feature">✨ And many more features coming soon!</li>
+            </ul>
+            <div class="modal-buttons">
+                <button class="close-modal">Close</button>
+                <a href="https://apps.apple.com/us/app/ev-cost/id6738306455" target="_blank" class="download-button pulse">Get Full Version</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

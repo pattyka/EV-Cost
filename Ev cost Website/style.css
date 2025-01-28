@@ -1,0 +1,793 @@
+:root {
+    --blue: rgb(10, 132, 255);
+    --white: #ffffff;
+    --gray: #f3f4f6;
+    --light-gray: #e5e7eb;
+    --dark-gray: #1f2937;
+    --dark-mode-bg: #111827;
+    --dark-mode-card: #172844;
+    --dark-mode-light-text: #d1d5db;
+    --darkerblue: rgb(44, 115, 186);
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--dark-mode-bg);
+    color: var(--white);
+    scroll-behavior: initial;
+  }
+  
+  body.light {
+    background: var(--gray);
+    color: var(--dark-gray);
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Header */
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(15, 21, 35, 0.193);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+  body.light .sticky-header {
+    background: rgba(255, 255, 255, 0.392);
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  /* Dark Mode Toggle */
+  #dark-mode-toggle {
+    width: 40px;
+    height: 40px;
+    background: var(--dark-mode-card);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: block;
+  }
+  
+  body.light #dark-mode-toggle {
+    background: var(--dark-mode-bg);
+  }
+  
+  /* Download Button */
+  .download-button {
+    background: var(--blue);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: visible;
+  }
+  
+  .download-button:hover {
+    background: rgb(0, 112, 245);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(10, 132, 255, 0.3);
+  }
+
+
+  
+  /* Hero Section */
+  .hero-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 0;
+  }
+  
+  .hero-content {
+    flex: 1;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-button {
+    background: var(--blue);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.3s;
+  }
+  
+  .cta-button:hover {
+    background: rgb(0, 112, 245);
+  }
+  
+  .hero-image {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 74px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: rotateY(0deg) rotateX(0deg);
+    transition: transform 0.3s ease-out;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-image {
+      margin-top: 2rem;
+    }
+  }
+  
+  body.light .hero-image img {
+    content: url('../img/screenshots/lightscreen.png');
+  }
+
+  body.light #dark-mode-toggle im {
+    content: url('../img/screenshots/icon/lightmoon.png');
+  }
+  
+  /* Features Section */
+  .features-section {
+    background: var(--dark-mode-card);
+    color: var(--dark-mode-light-text);
+    padding: 3rem 0;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  
+  body.light .features-section {
+    background: var(--white);
+    color: var(--dark-gray);
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  
+  .features-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .features-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .feature-card {
+    background: var(--dark-mode-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-color: var(--blue);
+  }
+  
+  /* Add shine effect on hover */
+  .feature-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 255, 255, 0.03),
+      transparent
+    );
+    transform: rotate(45deg);
+    transition: 0.6s;
+  }
+  
+  .feature-card:hover::after {
+    transform: rotate(45deg) translate(50%, 50%);
+  }
+  
+  /* Adjust for light mode */
+  body.light .feature-card {
+    background: var(--light-gray);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  body.light .feature-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--blue);
+  }
+  
+  /* Enhance shine effect for light mode */
+  body.light .feature-card::after {
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+  }
+  
+  /* Make icon transition smoother */
+  .icon {
+    font-size: 2rem;
+    color: var(--blue);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-card:hover .icon {
+    transform: scale(1.1);
+  }
+  
+  .feature-card h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* How It Works Section */
+  .how-it-works {
+    padding: 3rem 0;
+    text-align: center;
+  }
+  
+  .steps-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 200px;
+  }
+  
+  .step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--blue);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  /* Download Section */
+  .download-section {
+    background: var(--darkerblue);
+    color: var(--white);
+    text-align: center;
+    padding: 3rem 0;
+  }
+  
+  .download-section p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .download-section .cta-button {
+    background: var(--white);
+    color: var(--darkerblue);
+  }
+  
+  .download-section .cta-button:hover {
+    background: var(--light-gray);
+  }
+  
+  @media (max-width: 768px) {
+    .nav-actions {
+      margin-left: -15px;
+    }
+  }
+
+  /* Footer */
+  footer {
+    background: var(--dark-mode-card);
+    color: var(--dark-mode-light-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+  
+  body.light footer {
+    background: var(--white);
+    color: var(--dark-gray);
+  }
+
+  #dark-mode-toggle img{
+    width: 35px;
+    height: 35px;
+    margin: auto;
+    margin-left: -2.5px;
+  }
+
+  #logoimg {
+    width: 70px;
+    border-radius: 14px;
+  }
+
+  #logol {
+    width: 250px;
+    float: right;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+    border-radius: 14px;
+  }
+
+  @media (min-width: 768px) {
+    #logol {
+      float: left;
+    }
+  }
+
+  #headera {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+  }
+
+  body.light #headera {
+    color: var(--dark-gray);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Base animation classes */
+  .features-section,
+  .how-it-works,
+  .download-section,
+  .feature-card,
+  .step {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Animation for sections */
+  .features-section.animate-in,
+  .how-it-works.animate-in,
+  .download-section.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered animation for feature cards */
+  .feature-card {
+    transition-delay: calc(var(--card-index, 0) * 0.1s);
+  }
+
+  .feature-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Animation for steps */
+  .step {
+    transition-delay: calc(var(--step-index, 0) * 0.2s);
+  }
+
+  .step.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Add custom animations for different sections */
+  .features-section {
+    transition-duration: 1s;
+  }
+
+  .how-it-works {
+    transition-duration: 0.9s;
+  }
+
+  .download-section {
+    transition-duration: 0.7s;
+  }
+
+  /* Logo container hover effect */
+  .logo-container {
+    transition: transform 0.2s ease-out;
+    cursor: pointer;
+  }
+
+  /* Download button pulse animation */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(10, 132, 255, 0.7);
+    }
+    
+    50% {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px 10px rgba(10, 132, 255, 0);
+    }
+    
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(10, 132, 255, 0);
+    }
+  }
+
+  .download-button.pulse {
+    animation: pulse 2s ease-in-out;
+  }
+
+  /* Sticky header refinements */
+  .sticky-header {
+    transition: box-shadow 0.3s ease;
+  }
+
+  /* Enhanced blur effect */
+  .sticky-header {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Logo hover state */
+  .logo-container:hover img {
+    transform: scale(1.05);
+  }
+
+  .logo-container img {
+    transition: transform 0.3s ease;
+  }
+
+  /* Mobile-first improvements */
+
+  /* Adjust header for mobile */
+  @media (max-width: 768px) {
+    .sticky-header {
+      padding: 0.5rem 0;
+    }
+
+    .logo-container {
+      gap: 0.3rem;
+    }
+
+    #logoimg {
+      width: 50px; /* Slightly smaller logo on mobile */
+    }
+
+    .site-title {
+      font-size: 1.3rem; /* Smaller title on mobile */
+    }
+
+    /* Improve tap targets */
+    .nav-actions {
+      gap: 0.8rem;
+    }
+
+    #dark-mode-toggle {
+      width: 44px; /* Larger touch target */
+      height: 44px;
+    }
+
+    .download-button {
+      padding: 0.7rem 1.2rem; /* Larger touch target */
+      font-size: 1rem;
+    }
+  }
+
+  /* Improve hero section on mobile */
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .hero-image img {
+      max-width: 85%; /* Slightly smaller on mobile */
+      border-radius: 40px; /* Less rounded corners on mobile */
+    }
+  }
+
+  /* Improve feature cards on mobile */
+  @media (max-width: 768px) {
+    .features-section {
+      padding: 2rem 1rem;
+    }
+
+    .feature-card {
+      padding: 1.5rem;
+      margin: 0 0.5rem;
+    }
+
+    .features-container {
+      gap: 1rem; /* Tighter spacing on mobile */
+    }
+  }
+
+  /* Improve steps section on mobile */
+  @media (max-width: 768px) {
+    .steps-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .step {
+      max-width: 100%;
+      padding: 0 2rem;
+    }
+  }
+
+  /* Improve download section on mobile */
+  @media (max-width: 768px) {
+    .download-section {
+      padding: 2.5rem 1rem;
+    }
+
+    .download-section p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      padding: 0 1rem;
+    }
+  }
+
+  /* Improve footer on mobile */
+  @media (max-width: 768px) {
+    footer {
+      padding: 1.5rem 1rem;
+    }
+  }
+
+  /* Add safe areas for notched phones */
+  @supports (padding: max(0px)) {
+    .sticky-header,
+    .hero-section,
+    .features-section,
+    .how-it-works,
+    .download-section,
+    footer {
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
+    }
+  }
+
+  /* Improve touch scrolling */
+  @media (max-width: 768px) {
+    html, body {
+      -webkit-overflow-scrolling: touch;
+      scroll-padding-top: 70px; /* Account for fixed header */
+    }
+  }
+
+  /* Prevent text scaling */
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Add these new styles */
+
+  /* Try Calculator Button Styles */
+  .try-calculator-button {
+    background: transparent;
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+  }
+
+  .try-calculator-button:hover {
+    background: var(--blue);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  /* Hero Buttons Container */
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Try Calculator Banner */
+  .try-calculator-banner {
+    background: var(--dark-mode-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 3rem;
+    text-align: center;
+    border: 2px solid var(--blue);
+  }
+
+  body.light .try-calculator-banner {
+    background: var(--white);
+    color: var(--dark-gray);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  body.light .try-calculator-banner p {
+    color: var(--dark-gray);
+  }
+
+  /* Keep gradient text visible in both modes */
+  .gradient-text-small {
+    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+  }
+
+  /* App Features Grid */
+  .app-features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+    padding: 0 2rem;
+  }
+
+  .feature-highlight {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  /* Download Buttons */
+  .download-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .try-first-button {
+    background: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .try-first-button:hover {
+    background: var(--white);
+    color: var(--darkerblue);
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    .hero-buttons {
+      justify-content: center;
+    }
+
+    .app-features-grid {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 1rem;
+      gap: 1rem;
+    }
+
+    .feature-highlight {
+      padding: 1rem;
+    }
+
+    .try-calculator-banner {
+      margin: 2rem 1rem 0 1rem;
+      padding: 1.5rem;
+    }
+  }
+
+  /* Add this with your other button styles */
+  .try-button {
+    background: transparent;
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .try-button:hover {
+    background: var(--blue);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  /* Update mobile styles for the try button */
+  @media (max-width: 768px) {
+    .try-button {
+      visibility: hidden;
+    }
+  }
