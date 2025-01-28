@@ -1,4 +1,3 @@
-// Add this at the start of your calculator script
 document.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'light') {
@@ -72,12 +71,12 @@ calculateBtn.addEventListener('click', () => {
     });
 });
 
-// Calculate EV cost for the trip
+// Calculate ev cost for the trip
 function calculateEVCost(kilometers) {
     return (kilometers / 100) * CONSTANTS.EV_CONSUMPTION * CONSTANTS.ELECTRICITY_PRICE;
 }
 
-// Calculate ICE cost for the trip
+// Calculate ice cost for the trip
 function calculateICECost(kilometers) {
     return (kilometers / 100) * CONSTANTS.ICE_CONSUMPTION * CONSTANTS.FUEL_PRICE;
 }
